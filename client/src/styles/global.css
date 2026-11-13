@@ -1,0 +1,121 @@
+:root {
+  /* Palette: navy, white and subtle gold. Contrast pairs are checked by `npm run contrast`. */
+  --navy-900: #0b2545;
+  --navy-800: #13315c;
+  --navy-700: #1d4e89;
+  --gold-400: #d4a937;
+  --gold-700: #8a6d1f;
+  --ink: #1b2430;
+  --muted: #475569;
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --border: #5b6b7e;
+  --divider: #d5dce6;
+  --on-dark-muted: #d6e0ee;
+  --danger: #a61b1b;
+  --danger-bg: #fdf0f0;
+  --success: #0f5c2e;
+  --success-bg: #e8f4ec;
+  --info: #13315c;
+  --info-bg: #e9eff8;
+  --radius: 0.5rem;
+  --font: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  color: var(--navy-900);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--navy-700);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--navy-900);
+  text-decoration-thickness: 0.15em;
+}
+
+/* Visible focus for every interactive element (WCAG 2.4.7 / 2.4.13 intent). */
+:focus-visible {
+  outline: 3px solid var(--navy-900);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.site-header :focus-visible,
+.site-footer :focus-visible,
+.hero :focus-visible {
+  outline-color: var(--gold-400);
+}
+
+main:focus {
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  background: var(--gold-400);
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}

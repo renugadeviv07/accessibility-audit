@@ -1,0 +1,37 @@
+{
+  "name": "accessibility-audit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Accessible Public Service Portal: accessibility baseline and repository architecture audit (React + Express + SQLite monorepo).",
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "build": "npm run build --workspace client",
+    "start": "npm run build && npm run start --workspace server",
+    "test": "npm run test:server && npm run test:client",
+    "test:server": "vitest run --config vitest.server.config.js",
+    "test:client": "vitest run --config vitest.client.config.js",
+    "contrast": "node scripts/contrast-check.mjs",
+    "lighthouse:portal": "npx --yes lighthouse@12 http://localhost:3001 --only-categories=accessibility --output=html --output=json --output-path=docs/lighthouse/portal",
+    "lighthouse:indiapost": "npx --yes lighthouse@12 https://www.indiapost.gov.in/ --only-categories=accessibility --output=html --output=json --output-path=docs/lighthouse/indiapost"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "concurrently": "^9.1.0",
+    "jsdom": "^25.0.1",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.8"
+  }
+}
